@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rizki Ananda - Portofolio</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        crossorigin="anonymous"
+    />
+    
+    <!-- tailwindcss -->
+
+      <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <style>
+        :root {
+            --latar-utama: #1a1a1a;
+            --latar-sekunder: #2a2a2a;
+            --teks-utama: #ffffff;
+            --teks-sekunder: #b3b3b3;
+            --warna-aksen: #00ffff;
+            --gradien-awal: #00ff00;
+            --gradien-akhir: #00ffff;
+            --kecepatan-transisi: 0.3s;
+        }
+
+        * {
+            transition: all var(--kecepatan-transisi) ease;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--latar-utama);
+            color: var(--teks-utama);
+            font-family: "Inter", "Arial", sans-serif;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background-color: rgba(26, 26, 26, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: var(--teks-utama);
+            transition: color var(--kecepatan-transisi);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--warna-aksen);
+            transition: width var(--kecepatan-transisi);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: bold;
+            background: linear-gradient(
+                90deg,
+                var(--gradien-awal),
+                var(--gradien-akhir)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(0);
+            transition: transform var(--kecepatan-transisi),
+                box-shadow var(--kecepatan-transisi), background-color 0.3s ease;
+        }
+    .cardimg {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: none;
+    width: 190px;
+    justify-content: center;
+    align-items: center;  /* Menambahkan ini untuk menengahkan gambar secara vertikal */
+    display: flex;  /* Mengaktifkan Flexbox */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+    transition: transform var(--kecepatan-transisi),
+        box-shadow var(--kecepatan-transisi), background-color 0.3s ease;
+    }
+
+
+        .cardimg:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Project Card Styles */
+        .project-card {
+            cursor: pointer;
+            overflow: hidden;
+ }
+
+        .project-card img {
+            transition: transform var(--kecepatan-transisi);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Button Styles */
+        .btn-kustom {
+            background-color: var(--latar-sekunder);
+            color: var(--teks-utama);
+            border: 2px solid var(--warna-aksen);
+            transition: all var(--kecepatan-transisi);
+        }
+
+        .btn-kustom:hover {
+            background-color: var(--warna-aksen);
+            color: var(--latar-utama);
+            transform: translateY(-5px);
+        }
+
+        /* Social Icons */
+        .ikon-sosial a {
+            color: var(--teks-utama);
+            margin: 0 15px;
+            font-size: 1.8rem;
+            transition: color var(--kecepatan-transisi),
+                transform var(--kecepatan-transisi);
+        }
+
+        .ikon-sosial a:hover {
+            color: var(--warna-aksen);
+            transform: scale(1.2);
+        }
+
+        /* Project Modal */
+        #modalProyek .modal-content {
+            background-color: var(--latar-sekunder);
+        }
+
+        /* Benefits Section */
+        .bagian-manfaat {
+            background-color: var(--latar-sekunder);
+            padding: 3rem 0;
+            border-radius: 15px;
+        }
+
+        /* Testimonial Section */
+        .testimoni {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform var(--kecepatan-transisi);
+        }
+
+        .testimoni:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Rizki Ananda</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Proyek</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#mentorship">Mentorship</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+   <div id="home" class="container hero">
+    <div class="text-center">
+        <h1>
+            Hai, saya Rizki Ananda, seorang pengembang yang penuh semangat dengan kecintaan terhadap pembelajaran dan kerja sama.
+        </h1>
+    </div>
+</div>
+
+<div id="about" class="container">
+    <div class="intro-section row align-items-center justify-content-center">
+        <!-- Kolom untuk Foto -->
+        <div class="col-md-4 text-center cardimg">
+            <img alt="rizki ananda" height="250" src="rizkiananda.jpg" width="200"  />
+        </div>
+
+        <!-- Kolom untuk Skill/Teks -->
+    <div class="col-md-3">
+    <div class="career-section">
+        <div class="skills text-center">
+            <span class="badge m-2" style="background-color: #FF5733;">UI Design</span>
+            <span class="badge m-2" style="background-color: #33FF57;">UX Design</span>
+            <span class="badge m-2" style="background-color: #3357FF;">Prototyping</span>
+            <span class="badge m-2" style="background-color: #FF33A1;">Branding</span>
+            <span class="badge m-2" style="background-color: #FFC300;">HTML/CSS</span>
+            <span class="badge m-2" style="background-color: #DAF7A6;">Wireframing</span>
+            <span class="badge m-2" style="background-color: #C70039;">Architecture</span>
+            <span class="badge m-2" style="background-color: #900C3F;">User Research</span>
+            <span class="badge m-2" style="background-color: #581845;">User Interviews</span>
+            <span class="badge m-2" style="background-color: #1D1D1D;">Leadership</span>
+            <span class="badge m-2" style="background-color: #FF9F00;">Sketch</span>
+            <span class="badge m-2" style="background-color: #B1FFFC;">Adobe Suite</span>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+    </div>
+
+    <!-- Features Section -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 text-center">
+                    <i class="fas fa-code fa-3x mb-3 text-info"></i>
+                    <h4>Pengembangan Dinamis</h4>
+                    <p>Menciptakan pengalaman web yang responsif dan interaktif</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 text-center">
+                    <i class="fas fa-chart-line fa-3x mb-3 text-success"></i>
+                    <h4>Optimisasi Kinerja</h4>
+                    <p>Memastikan interaksi pengguna yang cepat, efisien, dan lancar</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 text-center">
+                    <i class="fas fa-user-friends fa-3x mb-3 text-warning"></i>
+                    <h4>Pendekatan Kolaboratif</h4 <p>Menekankan kerja sama dan komunikasi yang efektif</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Projects Section -->
+    <div id="projects" class="container mt-5">
+        <h2 class="text-center mb-4">Proyek Unggulan</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div
+                    class="project-card card"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalProyek"
+                    data-project-title="SIM-CATATAN-BELAJAR"
+                    data-project-description="SIM-CATATAN-BELAJAR adalah sistem manajemen catatan belajar yang dirancang untuk meningkatkan efisiensi dan keterlibatan pengguna dalam proses belajar. Dengan desain yang interaktif dan berfokus pada pengguna, SIM-CATATAN-BELAJAR memungkinkan pengguna untuk tidak hanya mencatat, tetapi juga mengelola dan memvisualisasikan pembelajaran mereka dengan cara yang lebih intuitif dan menyenangkan."
+                    data-project-image="Project1.png">
+                    <img
+                        src="Project1.png"
+                        class="card-img-top"
+                        alt="SIM-CATATAN-BELAJAR"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">SIM-CATATAN-BELAJAR</h5>
+                        <p class="card-text">
+                           Solusi Cerdas untuk Meningkatkan Pengalaman Pembelajaran
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div
+                    class="project-card card"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalProyek"
+                    data-project-title="KOST-MURAH-LHOKSEUMAWE"
+                    data-project-description="KOST-MURAH-LHOKSEUMAWE adalah platform yang dirancang untuk mempermudah pencarian, pengelolaan, dan penyewaan kost di kawasan Lhokseumawe. Dengan pendekatan yang modern dan berbasis teknologi, platform ini menawarkan solusi bagi penghuni kost dan pemilik kost untuk mengelola transaksi, fasilitas, dan informasi terkait secara lebih efisien dan transparan."
+                    data-project-image="project3.png">
+                    <img
+                        src="project3.png"
+                        class="card-img-top"
+                        alt="Manajemen Pendidikan"
+                        height="412"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">KOST-MURAH-LHOKSEUMAWE</h5>
+                        <p class="card-text">
+                         Solusi Cerdas untuk Manajemen Kost di Lhokseumawe
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial Section -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Testimonial</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="testimoni">
+                    <p>"Rizki adalah pengembang yang sangat berbakat dan selalu siap membantu!"</p>
+                    <h5>- Klien A</h5>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="testimoni">
+                    <p>"Kerja sama dengan Rizki sangat menyenangkan, hasilnya selalu memuaskan!"</p>
+                    <h5>- Klien B</h5>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="testimoni">
+                    <p>"Saya sangat merekomendasikan Rizki untuk proyek pengembangan web!"</p>
+                    <h5>- Klien C</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mentorship Section -->
+    <div id="mentorship" class="container-fluid bagian-manfaat mt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="section-title">Program Mentorship Frontend</h2>
+                    <div class="card mb-3 mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-users"></i> Panduan Pribadi 1:1
+                            </h5>
+                            <p class="card-text">
+                                Sesi panggilan video langsung dengan mentor berpengalaman untuk membahas kemajuan, tantangan, dan tujuan kar ir Anda.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-route"></i> Jalur Pembelajaran Terstruktur
+                            </h5>
+                            <p class="card-text">
+                                Silabus praktis dengan studi kasus dunia nyata dan proyek langsung untuk mempercepat pembelajaran Anda.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-comments"></i> Diskusi Kelompok
+                            </h5>
+                            <p class="card-text">
+                                Sesi diskusi kelompok untuk berbagi pengalaman dan belajar dari satu sama lain.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img
+                        src="https://storage.googleapis.com/a1aa/image/SF6yHudvQJLnPllbGn772W8Q043YNjefvWnhE1e9qyKM4nvnA.jpg"
+                        alt="Ilustrasi Mentorship"
+                        class="img-fluid rounded-circle"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="modalProyek" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Proyek</h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                    ></button>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+  <div id="contact" class="container mt-5">
+    <h2 class="text-center mb-4">Kontak Tim Kami</h2>
+    <p class="text-center mb-5">Beri tahu kami bagaimana kami bisa membantu.</p>
+    <div class="row">
+        <!-- Kartu Chat dengan Penjualan -->
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="contact-card border p-4 rounded">
+                <i class="fas fa-comments fa-3x mb-3"></i>
+                <h5>Chat dengan Penjualan</h5>
+                <p>Berbicara dengan tim kami yang ramah.</p>
+                <a href="mailto:Risskiananda@gmail.com">Risskiananda@gmail.com</a>
+            </div>
+        </div>
+
+        <!-- Kartu Chat dengan Dukungan -->
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="contact-card border p-4 rounded">
+                <i class="fas fa-headset fa-3x mb-3"></i>
+                <h5>Chat dengan Dukungan</h5>
+                <p>Kami di sini untuk membantu.</p>
+                <a href="mailto:Risskiananda@gmail.com">Risskiananda@gmail.com</a>
+            </div>
+        </div>
+
+        <!-- Kartu Kunjungi Kami -->
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="contact-card border p-4 rounded">
+                <i class="fas fa-map-marker-alt fa-3x mb-3"></i>
+                <h5>Kunjungi Kami</h5>
+                <p>Kunjungi kantor pusat kami.</p>
+                <a href="https://www.google.com/maps" target="_blank">Lihat di Google Maps</a>
+            </div>
+        </div>
+
+        <!-- Kartu Hubungi Kami -->
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="contact-card border p-4 rounded">
+                <i class="fas fa-phone-alt fa-3x mb-3"></i>
+                <h5>Hubungi Kami</h5>
+                <p>Senin-Jumat dari jam 8 pagi hingga 5 sore.</p>
+                <a href="tel:+623188186757">+623188186757</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer with Social Icons -->
+    <footer class="text-center mt-5">
+        <div class="container">
+
+            <div class="ikon-sosial">
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+          <p class="mt-3 text-center">&copy; 2023 Rizki Ananda. Semua hak dilindungi.</p>
+
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Interaksi modal proyek
+        document.querySelectorAll(".project-card").forEach((kartu) => {
+            kartu.addEventListener("click", function () {
+                const judulProyek = this.getAttribute("data-project-title");
+                const deskripsiProyek = this.getAttribute("data-project-description");
+                const gambarProyek = this.getAttribute("data-project-image");
+
+                const modalBody = document.querySelector("#modalProyek .modal-body");
+                modalBody.innerHTML = `
+                    <div class="text-center">
+                        <img src="${gambarProyek}" class="img-fluid mb-3" alt="${judulProyek}">
+                        <h3>${judulProyek}</h3>
+                        <p>${deskripsiProyek}</p>
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-light me-2">
+                                <i class="fas fa-eye me-2"></i>Lihat Proyek
+                            </a>
+                            <a href="#" class="btn btn-outline-success">
+                                <i class="fas fa-code me-2"></i>Kode Sumber
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth",
+                });
+            });
+        });
+
+        // Add animation to the project cards on load
+        window.addEventListener('load', () => {
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach((kartu, index) => {
+                kartu.style.opacity = 0;
+                kartu.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    kartu.style.opacity = 1;
+                    kartu.style.transform = 'translateY(0)';
+                    kartu.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                }, index * 200); // Staggered animation
+            });
+        });
+    </script>
+</body>
+</html>
